@@ -24,7 +24,7 @@ case $1 in
 
     ## Start Code Here
     chpst -u $RUNAS:$RUNAS elasticsearch -p $PIDFILE \
-      -Des.config=$CONFIG_DIR/elasticsearch.yml \
+      --default.path.conf=$CONFIG_DIR/elasticsearch.yml \
       1>> $LOG_DIR/$JOB_NAME.stdout.log \
       2>> $LOG_DIR/$JOB_NAME.stderr.log
 
