@@ -1,0 +1,33 @@
+---
+name: elasticsearch
+director_uuid: <%= `bosh status --uuid` %>
+
+releases:
+- {name: elasticsearch, version: latest }
+
+# stemcells:
+# - alias: default
+  # name: bosh-warden-boshlite-ubuntu-trusty-go_agent
+  # version: latest
+
+update:
+  canaries: 1
+  max_in_flight: 10
+  canary_watch_time: 1000-30000
+  update_watch_time: 1000-30000
+
+
+instance_groups:
+- name: elasticsearch
+  instances: 1
+  resource_pool: default
+  networks: [{ name: default }]
+  azs: [ z1, z2 ]
+  persistent_disk_type: default
+  jobs:
+  - name: elasticsearch
+    release: elasticsearch
+    properties:
+      ping_hosts:
+      - 10.244.10.1
+
