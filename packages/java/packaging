@@ -1,7 +1,6 @@
 # abort script on any command that exit with a non zero value
 set -e
 
-tar -xvf java/jre-8u101-linux-x64.tar.gz
+tar -xvf java/jre-8u102-linux-x64.tar.gz
 
-cp -a 
-jre1.8.0_101/. $BOSH_INSTALL_TARGET
+cp -a jre1.8.0_102/. $BOSH_INSTALL_TARGET
